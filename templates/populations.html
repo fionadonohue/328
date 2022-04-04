@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <meta charset="utf-8">
     <title></title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='stylesheet.css')}}">
     <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, initial-scale=1">
      <!-- The above 2 meta tags should come first in the head; any other head content should come *after* these tags -->
@@ -23,9 +21,11 @@
      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 
-  <script src="myscript.js"></script>
-  <link rel="stylesheet" href="style.css">
-  </head>
+     <script src="myfile"></script>
+  <link href="{{ url_for('static', filename='stylesheet.css')}}" rel="stylesheet">
+<script src="jquery-3.6.0.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
   <body>
 
     <nav class="navbar navbar-expand-sm bg-light justify-content-center">
@@ -45,7 +45,79 @@
  	  </li>
    </ul>
  </nav>
- <h1 class="head">Population Size</h1>
+ <h1 id="head">Population Size</h1>
 <p> The data used to provide this information is found here. </p>
+<br>
+
+<!-- Tab links -->
+<div class="tab">
+  <button class="tablinks" onclick="openState(event, 'Alabama')">Alabama</button>
+  <button class="tablinks" onclick="openState(event, 'Alaska')">Alaska</button>
+  <button class="tablinks" onclick="openState(event, 'Arizona')">Arizona</button>
+  <button class="tablinks" onclick="openState(event, 'Arkansas')">Arkansas</button>
+  <button class="tablinks" onclick="openState(event, 'California')">California</button>
+  <button class="tablinks" onclick="openState(event, 'Colorado')">Colorado</button>
+  <button class="tablinks" onclick="openState(event, 'Connecticut')">Connecticut</button>
+  <button class="tablinks" onclick="openState(event, 'Delaware')">Delaware</button>
+  <button class="tablinks" onclick="openState(event, 'Florida')">Florida</button>
+  <button class="tablinks" onclick="openState(event, 'Georgia')">Georgia</button>
+  <button class="tablinks" onclick="openState(event, 'Hawaii')">Hawaii</button>
+  <button class="tablinks" onclick="openState(event, 'Idaho')">Idaho</button>
+  <button class="tablinks" onclick="openState(event, 'Illinois')">Illinois</button>
+  <button class="tablinks" onclick="openState(event, 'Indiana')">Indiana</button>
+  <button class="tablinks" onclick="openState(event, 'Iowa')">Iowa</button>
+  <button class="tablinks" onclick="openState(event, 'Kansas')">Kansas</button>
+  <button class="tablinks" onclick="openState(event, 'Kentucky')">Kentucky</button>
+  <button class="tablinks" onclick="openState(event, 'Louisiana')">Louisiana</button>
+  <button class="tablinks" onclick="openState(event, 'Maine')">Maine</button>
+  <button class="tablinks" onclick="openState(event, 'Maryland')">Maryland</button>
+  <button class="tablinks" onclick="openState(event, 'Massachusetts')">Massachusetts</button>
+  <button class="tablinks" onclick="openState(event, 'Michigan')">Michigan</button>
+  <button class="tablinks" onclick="openState(event, 'Minnesota')">Minnesota</button>
+  <button class="tablinks" onclick="openState(event, 'Mississippi')">Mississippi</button>
+  <button class="tablinks" onclick="openState(event, 'Missouri')">Missouri</button>
+  <button class="tablinks" onclick="openState(event, 'Montana')">Montana</button>
+  <button class="tablinks" onclick="openState(event, 'Nebraska')">Nebraska</button>
+  <button class="tablinks" onclick="openState(event, 'Nevada')">Nevada</button>
+  <button class="tablinks" onclick="openState(event, 'NewHampshire')">NewHampshire</button>
+  <button class="tablinks" onclick="openState(event, 'NewJersey')">NewJersey</button>
+  <button class="tablinks" onclick="openState(event, 'NewMexico')">NewMexico</button>
+  <button class="tablinks" onclick="openState(event, 'NorthCarolina')">NorthCarolina</button>
+  <button class="tablinks" onclick="openState(event, 'NorthDakota')">NorthDakota</button>
+  <button class="tablinks" onclick="openState(event, 'Ohio')">Ohio</button>
+  <button class="tablinks" onclick="openState(event, 'Oklahoma')">Oklahoma</button>
+  <button class="tablinks" onclick="openState(event, 'Oregon')">Oregon</button>
+  <button class="tablinks" onclick="openState(event, 'Pennsylvania')">Pennsylvania</button>
+  <button class="tablinks" onclick="openState(event, 'RhodeIsland')">RhodeIsland</button>
+  <button class="tablinks" onclick="openState(event, 'SouthCaroina')">SouthCaroina</button>
+  <button class="tablinks" onclick="openState(event, 'SouthDakota')">SouthDakota</button>
+  <button class="tablinks" onclick="openState(event, 'Tennessee')">Tennessee</button>
+  <button class="tablinks" onclick="openState(event, 'Texas')">Texas</button>
+  <button class="tablinks" onclick="openState(event, 'Utah')">Utah</button>
+  <button class="tablinks" onclick="openState(event, 'Vermont')">Vermont</button>
+  <button class="tablinks" onclick="openState(event, 'Virginia')">Virginia</button>
+  <button class="tablinks" onclick="openState(event, 'Washington')">Washington</button>
+  <button class="tablinks" onclick="openState(event, 'WestVirginia')">WestVirginia</button>
+  <button class="tablinks" onclick="openState(event, 'Wisconsin')">Wisconsin</button>
+  <button class="tablinks" onclick="openState(event, 'Wyoming')">Wyoming</button>
+
+</div>
+
+<!-- Tab content -->
+<div id="Wyoming" class="tabcontent">
+  <h3>Wyoming</h3>
+  <p>London is the capital city of England.</p>
+</div>
+
+<div id="Paris" class="tabcontent">
+  <h3>Paris</h3>
+  <p>Paris is the capital of France.</p>
+</div>
+
+<div id="Tokyo" class="tabcontent">
+  <h3>Tokyo</h3>
+  <p>Tokyo is the capital of Japan.</p>
+</div>
+
   </body>
 </html>
