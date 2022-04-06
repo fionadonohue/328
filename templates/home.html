@@ -24,7 +24,7 @@
   <script src="myscript.js"></script>
   <link rel="stylesheet" href="{{ url_for('static', filename='stylesheet.css')}}">
 
-  <title>Vacation Quiz</title>
+  <title>About the Data</title>
 
 
   </head>
@@ -42,12 +42,20 @@
        <a class="nav-link" href="diversity.html">Diversity</a>
      </li>
 
- 	<li class="nav-item">
- 	  <a class="nav-link" href="housing.html">Housing</a>
- 	  </li>
+       <li class="nav-item">
+         <a class="nav-link" href="housing.html">Housing</a>
+     </li>
    </ul>
  </nav>
-    <h1 class="head">About the Data</h1>
+ <h1>About the Data</h1>
+ <p>This site uses information from the County Demographics dataset found on <a href="https://think.cs.vt.edu/corgis/json/index.html">this site.</a>
+ The data was obtained through the United States Census Bureu on counties in the US from 2010 through 2019. The information includes statistics such as age distributions, education levels, employment rates, income, ethnicity percentages, along with extra information. </p>
 
+ <p> The information given doesn't specify the units of measurment for all of the number statistics. Intigers count individual pieces of data (eg. number of people in a population), income is measured in USD, units of time are measured in minutes, land area is measured in square meters, and any other values will be measured as a percentage. </p>
+
+ <p> One of the statistics measured is per capita income. Per capita income is the mean income of adults and children living in a group. The measurment is rounded to the nearest dollar. </p>
+
+ <p> Another statistic is on The Accomodation and Food Services Sales. This is sector made up of establishments that provide lodging, prepared meals and drinks to customers. </p>
+   </body>
   </body>
 </html>

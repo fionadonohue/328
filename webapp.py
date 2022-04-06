@@ -1,24 +1,34 @@
 from flask import Flask, url_for, render_template, request
-
 app = Flask(__name__) #__name__ = "__main__" if this is the file that was run.  Otherwise, it is the name of the file (ex. webapp)
 
-@app.route("/")
-def render_main():
-    return render_template('populations.html')
+@app.route("/", methods = ["POST", "GET"])
+def home():
+    if request.method == "POST":
+            a2 = request.form["a2"]
+            a3 = request.form["a3"]
+            a4 = request.form["a4"]
+            a5 = request.form["a5"]
+            a6 = request.form["a6"]
+            a7 = request.form["a7"]
+            a8 = request.form["a8"]
 
-@app.route("/response")
-def render_response():
-    color = request.args['color']
-    #The request object stores information about the request sent to the server.
-    #args is an ImmutableMultiDict (like a dictionary but can have mutliple values for the same key and can't be changed)
-    #The information in args is visible in the url for the page being requested. ex. .../response?color=blue
-    if color == 'pink':
-        reply1 = "That's my favorite color, too!"
+            place = get_place(a2, a3, a4, a5, a6, a7, a8)
+            return render_template("populations.html", city = place)
     else:
-        reply1 = "My favorite color is pink."
-    n = int(request.args['multNum']) #values in request.args are strings by default
-    reply2 = "2 x " + str(n) + " = " + str((2*n))
-    return render_template('response.html', response1 = reply1, response2 = reply2)
+        return render_template("home.html")
+@app.route("/response")
+def render_page2():
+    return render_template('response.html')
 
-if __name__=="__main__":
-    app.run(debug=False)
+def get_place(a2, a3, a4, a5, a6, a7, a8):
+    sum = int(a2) + int(a3) + int(a4) + int(a5) + int(a6) + int(a7) + int(a8)
+    if (sum>=28):
+        place = "New York City, New York"
+
+    if (28>sum>=21):
+        place = "Austin, Texas"
+
+    if (sum<21):
+        place = "Sedona, Arizona"
+
+    return place
