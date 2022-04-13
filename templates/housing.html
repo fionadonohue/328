@@ -45,14 +45,26 @@
    </ul>
  </nav>
  <h1 class="head">Housing Information</h1>
- <form action="/">
+
+ <form action="/housing", method = "post">
+
    <select name="county">
-     <option value="Cherokee County">Cherokee County</option><option value="Chilton County">Chilton County</option><option value="Choctaw County">Choctaw County</option><option value="Clarke County">Clarke County</option><option value="Clay County">Clay County</option><option value="Cleburne County">Cleburne County</option><option value="Coffee County">Coffee County</option>
-   </select>
-   <br>
-   <br>
+<option value="" disabled selected>select your option</option>
+
+    {% for data in json %}
+        <option id = "housing" value="{{data.County}}" >{{ data.County }}</option>
+    {% endfor %}
+
+    </select>
+   <br><br>
    <input type="submit">
+   <h3>County: {{ countyname }}</h3>
+   <h3>Median Income: {{ medianincome }}</h3>
+   <h3>Home Ownership Rate: {{ ownershiprate }}</h3>
+   <h3>Number of Households: {{ numhouseholds }}</h3>
+
  </form>
+
 
  </div>
 

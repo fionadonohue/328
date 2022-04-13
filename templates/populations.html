@@ -40,17 +40,28 @@
        <a class="nav-link" href="diversity.html">Diversity</a>
      </li>
        <li class="nav-item">
-         <a class="nav-link" href="housing.html">Housing</a>
+         <a class="nav-link" href= "{{ url_for("housing") }}">Housing</a>
  	  </li>
    </ul>
  </nav>
  <h1 id="head">Population Size</h1>
- <form action="/">
+ <form action="/", method = "post">
+
    <select name="county">
-     <option value="Cherokee County">Cherokee County</option><option value="Chilton County">Chilton County</option><option value="Choctaw County">Choctaw County</option><option value="Clarke County">Clarke County</option><option value="Clay County">Clay County</option><option value="Cleburne County">Cleburne County</option><option value="Coffee County">Coffee County</option>
-   </select>
+<option value="" disabled selected>select your option</option>
+
+    {% for data in json %}
+        <option id = "county" value="{{data.County}}" >{{ data.County }}</option>
+    {% endfor %}
+
+    </select>
    <br><br>
    <input type="submit">
+   <h3>County: {{ countyname }}</h3>
+   <h3 >2010 population: {{ ten_population }}</h3>
+   <h3 >2014 population: {{ fourteen_population }}</h3>
+   <h3 >Percent change: {{ percent_population }}</h3>
+
  </form>
 
   </body>
