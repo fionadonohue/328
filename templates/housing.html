@@ -1,59 +1,19 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Housing Information</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='stylesheet.css')}}">
-    <meta charset="utf-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1">
-     <!-- The above 2 meta tags should come first in the head; any other head content should come *after* these tags -->
+{% extends "layout.html" %}
 
-     <!-- Bootstrap -->
+{% set active_page = "housing" %}
 
-     <!-- Latest compiled and minified CSS -->
-     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+{% block content %}
 
-     <!-- jQuery library -->
-     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-     <!-- Popper JS -->
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-
-     <!-- Latest compiled JavaScript -->
-     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-
-  <script src="myscript.js"></script>
-  <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-
-    <nav class="navbar navbar-expand-sm bg-light justify-content-center">
-   <ul class="navbar-nav">
-   <li class="nav-item">
-       <a class="nav-link" href="home.html">About the Data</a>
-     </li>
-     <li class="nav-item">
-       <a class="nav-link" href="populations.html">Population Size</a>
-     </li>
-     <li class="nav-item">
-       <a class="nav-link" href="diversity.html">Diversity</a>
-     </li>
-       <li class="nav-item">
-         <a class="nav-link" href="housing.html">Housing</a>
-     </li>
-   </ul>
- </nav>
  <h1 class="head">Housing Information</h1>
 
- <form action="/housing", method = "post">
+ <form action="/housing">
 
    <select name="county">
 <option value="" disabled selected>select your option</option>
 
-    {% for data in json %}
-        <option id = "housing" value="{{data.County}}" >{{ data.County }}</option>
-    {% endfor %}
+{{housing}}
+
+
 
     </select>
    <br><br>
@@ -64,13 +24,11 @@
    <h3>Home Ownership Rate: {{ ownershiprate }}</h3>
    <h3>Number of Households: {{ numhouseholds }}</h3> -->
 
-   <h3>The median yearly income of {{ countyname }} residents is ${{ medianincome }}. The home ownership rate is {{ ownershiprate }}%, and there are {{ numhouseholds }} households in the county.</h3>
-
  </form>
-
+{% if countyname %}
+ <h3>The median yearly income of {{ countyname }} residents is ${{ medianincome }}. The home ownership rate is {{ ownershiprate }}%, and there are {{ numhouseholds }} households in the county.</h3>
+ {% endif %}
 
  </div>
 
-
-  </body>
-</html>
+ {% endblock %}
