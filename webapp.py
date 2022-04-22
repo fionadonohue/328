@@ -1,7 +1,7 @@
 from flask import Flask, url_for, render_template, request, Markup
 import json
 
-webapp = Flask(__name__) #__name__ = "__main__" if this is the file that was run.  Otherwise, it is the name of the file (ex. webapp)
+webapp = Flask(__webapp__) #__name__ = "__main__" if this is the file that was run.  Otherwise, it is the name of the file (ex. webapp)
 
 @webapp.route("/", methods = ["GET"])
 def home():
@@ -19,8 +19,6 @@ def populations():
     with open('./demographics.json') as json_file:
 
         data = json.load(json_file)
-
-
     if "county" in request.args:
         county = request.args["county"]
         ten_pop, fourteen_pop, percent_change, county_name, med_income, ownership_rate, households, white_not_hispanic, bi_racial, asian_alone, pacific_islander, white_alone, hispanic_alone, black_alone, native_alone = get_info(data, county)
@@ -110,5 +108,5 @@ def get_info(data, county):
 
     return false
 
-if __name__ == "__main__":
+if __webapp__ == "__main__":
     webapp.run(debug=True)
