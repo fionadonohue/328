@@ -1,9 +1,9 @@
 from flask import Flask, url_for, render_template, request, Markup
 import json
 
-webapp = Flask(__webapp__) #__name__ = "__main__" if this is the file that was run.  Otherwise, it is the name of the file (ex. webapp)
+app = Flask(__name__) #__name__ = "__main__" if this is the file that was run.  Otherwise, it is the name of the file (ex. webapp)
 
-@webapp.route("/", methods = ["GET"])
+@app.route("/", methods = ["GET"])
 def home():
     return render_template("home.html")
     if request.method == "GET": #if submit button is hit and data is updated
@@ -14,7 +14,7 @@ def home():
         ten_pop, fourteen_pop, percent_change, countyname, med_income, ownership_rate, households, white_not_hispanic, bi_racial, asian_alone, pacific_islander, white_alone, hispanic_alone, black_alone, native_alone = get_info(data, county)
 
 #population route...
-@webapp.route("/populations", methods = ["GET"])
+@app.route("/populations", methods = ["GET"])
 def populations():
     with open('./demographics.json') as json_file:
 
@@ -28,7 +28,7 @@ def populations():
 #...population route
 
 #housing route...
-@webapp.route("/housing", methods = ["GET"])
+@app.route("/housing", methods = ["GET"])
 def housing():
     if "county" in request.args:
         with open('./demographics.json') as json_file:
@@ -51,7 +51,7 @@ def housing():
 #...housing route
 
 #dversity route...
-@webapp.route("/diversity", methods = ["GET"])
+@app.route("/diversity", methods = ["GET"])
 def diversity():
     if "county" in request.args:
         with open('./demographics.json') as json_file:
@@ -108,5 +108,5 @@ def get_info(data, county):
 
     return false
 
-if __webapp__ == "__main__":
-    webapp.run(debug=True)
+if __name__ == "__main__":
+    app.run(debug=True)
