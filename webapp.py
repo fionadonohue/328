@@ -11,17 +11,21 @@ def home():
             data = json.load(json_file)
         county = request.args["county"]
 
-        ten_pop, fourteen_pop, percent_change, county_name, med_income, ownership_rate, households, white_not_hispanic, bi_racial, asian_alone, pacific_islander, white_alone, hispanic_alone, black_alone, native_alone = get_info(data, county)
+        ten_pop, fourteen_pop, percent_change, countyname, med_income, ownership_rate, households, white_not_hispanic, bi_racial, asian_alone, pacific_islander, white_alone, hispanic_alone, black_alone, native_alone = get_info(data, county)
 
 #population route...
 @webapp.route("/populations", methods = ["GET"])
 def populations():
-    if "county" in request.args:
-        return render_template("populations.html", countyname = county_name , json = data, ten_population = ten_pop , fourteen_population = fourteen_pop, percent_population = percent_change, )
-    else:
-        with open('./demographics.json') as json_file:
-            data = json.load(json_file)
+    with open('./demographics.json') as json_file:
 
+        data = json.load(json_file)
+
+
+    if "county" in request.args:
+        county = request.args["county"]
+        ten_pop, fourteen_pop, percent_change, county_name, med_income, ownership_rate, households, white_not_hispanic, bi_racial, asian_alone, pacific_islander, white_alone, hispanic_alone, black_alone, native_alone = get_info(data, county)
+        return render_template("populations.html", countyname = county_name, json = data, ten_population = ten_pop , fourteen_population = fourteen_pop, percent_population = percent_change)
+    else:
         return render_template("populations.html", json = data)
 #...population route
 
@@ -69,12 +73,16 @@ def diversity():
 
 
 def get_info(data, county):
+    print('kjsnjkdsnjdknsjzkfndjskxznfdjksnjdskndksjndjksndkjsndkjfndxjkdnxjknxkjndkjxnfdkjndsfjk')
+    print(data)
+    print(county)
     for i in range(len(data)):
         if data [i]["County"] == county:
+            print(data[i])
             #population...
             fourteen_pop = int(data[i]["Population"]["2014 Population"])
             ten_pop = int(data[i]["Population"]["2010 Population"])
-            countyname = data[i]["County"]
+            county_name = data[i]["County"]
             percent_change = str(round((((fourteen_pop - ten_pop) / ten_pop) * 100), 2))
             percent_change_string = percent_change + "%"
             #...population
@@ -98,7 +106,7 @@ def get_info(data, county):
 
 #white_not_hispanic, bi_racial, asian_alone, pacific_islander, white_alone, hispanic_alone, black_alone, native_alone
 
-            return ten_pop, fourteen_pop, percent_change_string, countyname, med_income, ownership_rate, households, white_not_hispanic, bi_racial, asian_alone, pacific_islander, white_alone, hispanic_alone, black_alone, native_alone
+            return ten_pop, fourteen_pop, percent_change_string, county_name, med_income, ownership_rate, households, white_not_hispanic, bi_racial, asian_alone, pacific_islander, white_alone, hispanic_alone, black_alone, native_alone
 
     return false
 
